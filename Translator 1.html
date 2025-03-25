@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaybayinPh</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    <!-- Header with Navigation -->
+    <header class="site-header sticky-top">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <div class="logo-container">
+            <img src="bird.png" alt="Baybayin Logo" class="logo">
+            <span class="logo-text">BaybayinPH</span>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#translator" aria-current="page">Translator</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#lessons">Lessons</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#quiz">Quiz</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container translator-container" id="translator">
+        <div class="header-section">
+          <h1 class="display-4">Baybayin-Filipino Translator</h1>
+          <p class="lead">Translate between modern Filipino (Tagalog) and the ancient Baybayin script</p>
+          <button id="darkModeToggle" class="btn btn-outline-light btn-sm">
+            <i class="fas fa-moon"></i> Toggle Dark Mode
+          </button>
+        </div>
+        
+        <div class="card info-card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-info-circle me-2"></i>About Baybayin</h5>
+            <p class="card-text">
+              Baybayin is an ancient Filipino script where each symbol represents a syllable.
+              It was used to write Tagalog and other languages of the Philippines prior to Spanish colonization.
+              Each character has an inherent 'a' sound, with marks (kudlit) added to change vowels.
+            </p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <label for="inputText" class="form-label"><i class="fas fa-keyboard me-2"></i>Input Text:</label>
+            <textarea id="inputText" class="form-control" rows="5" placeholder="Type or paste text here..."></textarea>
+          </div>
+          <div class="col-md-6 mb-4">
+            <label for="outputText" class="form-label"><i class="fas fa-language me-2"></i>Output:</label>
+            <div class="output-container">
+              <div id="outputText" class="baybayin-text"></div>
+              <button id="copyBtn" class="copy-btn">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="translationDirection" class="form-label">
+              <i class="fas fa-exchange-alt me-2"></i>Translation Direction:
+            </label>
+            <select id="translationDirection" class="form-select">
+              <option value="filipino-to-baybayin">Filipino to Baybayin</option>
+              <option value="baybayin-to-filipino">Baybayin to Filipino</option>
+            </select>
+          </div>
+          <div class="col-md-6 d-grid">
+            <button id="translateBtn" class="btn btn-primary mt-4">
+              <i class="fas fa-language me-2"></i>Translate
+            </button>
+            <div class="download-section mt-3">
+              <button id="downloadTextBtn" class="btn btn-outline-secondary">
+                <i class="fas fa-file-download me-2"></i>Download as Text
+              </button>
+              <button id="downloadImageBtn" class="btn btn-outline-secondary">
+                <i class="fas fa-image me-2"></i>Download as Image
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="alertBox" class="alert alert-warning d-none" role="alert">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          Some characters couldn't be translated. Please adjust your input.
+        </div>
+        
+        <div class="card examples-card">
+          <div class="card-header">
+            <i class="fas fa-list me-2"></i>Examples
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>Filipino to Baybayin:</strong></p>
+                <p class="example-text">"Ako" → <span class="text-primary">ᜀᜃᜓ</span></p>
+                <p class="example-text">"Bayan" → <span class="text-primary">ᜊᜌᜈ᜔</span></p>
+                <p class="example-text">"Salamat" → <span class="text-primary">ᜐᜎᜋᜆ᜔</span></p>
+                <p class="example-text">"Pilipinas" → <span class="text-primary">ᜉᜒᜎᜒᜉᜒᜈᜐ᜔</span></p>
+              </div>
+              <div class="col-md-6">
+                <p><strong>Baybayin to Filipino:</strong></p>
+                <p class="example-text"><span class="text-primary">ᜀᜃᜓ</span> → "Ako"</p>
+                <p class="example-text"><span class="text-primary">ᜃᜒᜆ</span> → "Kita"</p>
+                <p class="example-text"><span class="text-primary">ᜋᜊᜓᜑᜌ᜔</span> → "Mabuhay"</p>
+                <p class="example-text"><span class="text-primary">ᜋᜄᜈ᜔ᜇ</span> → "Maganda"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lessons Section -->
+      <div class="container" id="lessons">
+        <h2>Lessons</h2>
+        <p>Welcome to our Baybayin Lessons! Here, you can learn the basics of the ancient Filipino script step-by-step.</p>
+        <div class="lesson-item">
+          <h3>Lesson 1: Introduction to Baybayin Characters</h3>
+          <p>Start with the basic characters representing syllables like "ba," "ka," "ma." Each character has an inherent 'a' sound.</p>
+        </div>
+        <div class="lesson-item">
+          <h3>Lesson 2: Adding Kudlit</h3>
+          <p>Learn how to modify vowels using kudlit (dots or marks) to change 'a' to 'e,' 'i,' 'o,' or 'u.'</p>
+        </div>
+        <div class="lesson-item">
+          <h3>Lesson 3: Writing Simple Words</h3>
+          <p>Practice writing common Filipino words such as "ako" (I), "bayan" (town), and "salamat" (thank you).</p>
+        </div>
+        <p>More lessons coming soon as we, college students, continue to develop this educational resource!</p>
+      </div>
+
+      <!-- Quiz Section -->
+      <div class="container" id="quiz">
+        <h2>Quiz</h2>
+        <p>Test your Baybayin knowledge with these simple quizzes designed by us, college students passionate about Filipino culture.</p>
+        <div class="quiz-item">
+          <h3>Quiz 1: Character Recognition</h3>
+          <p>Match the Baybayin symbol to its correct syllable: ᜊ (ba), ᜃ (ka), ᜋ (ma).</p>
+        </div>
+        <div class="quiz-item">
+          <h3>Quiz 2: Word Translation</h3>
+          <p>Translate "Mahal" (love) into Baybayin. Hint: It’s ᜋᜑᜎ᜔.</p>
+        </div>
+        <div class="quiz-item">
+          <h3>Quiz 3: Reading Baybayin</h3>
+          <p>What does ᜐᜎᜋᜆ᜔ mean? (Answer: Salamat - thank you).</p>
+        </div>
+        <p>Stay tuned for interactive quizzes as we work on enhancing this section!</p>
+      </div>
+
+      <!-- About Section -->
+      <div class="container" id="about">
+        <h2>About Us</h2>
+        <p>We are a group of college students from the Philippines passionate about preserving our cultural heritage. BaybayinPH is our project to make the ancient Baybayin script accessible to everyone.</p>
+        <p>As students, we’re learning and growing while building this tool, aiming to educate others about Filipino history and language. Our team consists of programmers, designers, and language enthusiasts working together to promote Baybayin in the digital age.</p>
+        <p>Contact us at: baybayinph.team@gmail.com</p>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5 class="footer-heading">About BaybayinPH</h5>
+            <p class="footer-text">
+              BaybayinPH is dedicated to preserving and promoting the ancient Filipino writing system.
+              Our tools and resources aim to make Baybayin accessible to everyone interested in
+              Filipino language and culture.
+            </p>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h5 class="footer-heading">Learn</h5>
+            <a href="#" class="footer-link">Beginner's Guide</a>
+            <a href="#" class="footer-link">History</a>
+            <a href="#" class="footer-link">Pronunciation</a>
+            <a href="#" class="footer-link">Practice</a>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h5 class="footer-heading">Resources</h5>
+            <a href="#" class="footer-link">Font Downloads</a>
+            <a href="#" class="footer-link">Research</a>
+            <a href="#" class="footer-link">Dictionary</a>
+            <a href="#" class="footer-link">FAQ</a>
+          </div>
+          <div class="col-md-4">
+            <h5 class="footer-heading">Legal</h5>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Cookie Policy</a>
+            <p class="footer-text mt-3">
+              <small>This resource is provided for educational purposes only.
+                BaybayinPH is not affiliated with any government institution.</small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-md-start mb-2 mb-md-0">
+              <p class="footer-text mb-0">© 2025 BaybayinPH. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+   <script src="script.js"></script>
+   </body>
+</html>

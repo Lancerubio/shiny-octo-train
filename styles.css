@@ -1,0 +1,366 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-content {
+    flex: 1;
+}
+.translator-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+.header-section {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a4bac 100%);
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.baybayin-text {
+    font-size: 28px;
+    line-height: 1.8;
+    padding: 1rem;
+    min-height: 140px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    overflow-y: auto;
+}
+.info-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #0d6efd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.info-card:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.example-text {
+    color: #495057;
+    font-style: italic;
+    padding: 0.5rem 0;
+}
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.btn-primary:hover {
+    background-color: #0a58ca;
+    border-color: #0a53be;
+}
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.download-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.alert {
+    border-radius: 5px;
+}
+.examples-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+.examples-card .card-header {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+.copy-btn:hover {
+    opacity: 1;
+}
+.output-container {
+    position: relative;
+}
+#translationDirection {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+}
+.baybayin-char {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.baybayin-char:hover {
+    transform: scale(1.2);
+    color: #0d6efd;
+}
+.dark-mode {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+.dark-mode .translator-container {
+    background-color: #212529;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+}
+.dark-mode .baybayin-text,
+.dark-mode #inputText,
+.dark-mode #translationDirection {
+    background-color: #343a40;
+    color: #f8f9fa;
+    border-color: #495057;
+}
+.dark-mode .info-card,
+.dark-mode .examples-card {
+    background-color: #2b3035;
+    border-color: #495057;
+}
+.dark-mode .examples-card .card-header {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.dark-mode .form-label,
+.dark-mode .example-text {
+    color: #e9ecef;
+}
+.dark-mode .copy-btn {
+    background: rgba(52, 58, 64, 0.8);
+    color: #f8f9fa;
+}
+/* Animation for successful copy */
+@keyframes copied {
+    0% { background-color: rgba(40, 167, 69, 0.2); }
+    100% { background-color: transparent; }
+}
+.copied {
+    animation: copied 1.5s ease;
+}
+
+/* New styles for header and footer */
+.site-header {
+    background-color: #0d6efd;
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+.logo-text {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0;
+}
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+.nav-link:hover {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.site-footer {
+    background-color: #0a4bac;
+    color: white;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+.footer-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.footer-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+.footer-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
+.social-icon {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    transition: transform 0.3s ease;
+}
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Dark mode adjustments for header and footer */
+.dark-mode .site-header {
+    background-color: #1a1e21;
+}
+.dark-mode .site-footer {
+    background-color: #1a1e21;
+}
+.dark-mode .footer-bottom {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Active nav link */
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: white !important;
+}
+
+/* Enhanced styles for About, Lessons, and Quiz sections */
+#about, #lessons, #quiz {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+#about:hover, #lessons:hover, #quiz:hover {
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+#about h2, #lessons h2, #quiz h2 {
+    color: #0d6efd;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 0.5rem;
+}
+
+#about p, #lessons p, #quiz p {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+#lessons h3, #quiz h3 {
+    color: #0a4bac;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+#lessons h3::before, #quiz h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 80%;
+    background-color: #0d6efd;
+    border-radius: 3px;
+}
+
+#about p:last-child {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* Dark mode adjustments for About, Lessons, and Quiz */
+.dark-mode #about, .dark-mode #lessons, .dark-mode #quiz {
+    background-color: #212529;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+}
+
+.dark-mode #about h2, .dark-mode #lessons h2, .dark-mode #quiz h2 {
+    color: #66b0ff;
+    border-bottom-color: #66b0ff;
+}
+
+.dark-mode #about p, .dark-mode #lessons p, .dark-mode #quiz p {
+    color: #e9ecef;
+}
+
+.dark-mode #lessons h3, .dark-mode #quiz h3 {
+    color: #99c2ff;
+}
+
+.dark-mode #lessons h3::before, .dark-mode #quiz h3::before {
+    background-color: #66b0ff;
+}
+
+.dark-mode #about p:last-child {
+    color: #adb5bd;
+}
+
+/* Specific styling for Lessons and Quiz content */
+.lesson-item, .quiz-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #0d6efd;
+    transition: transform 0.3s ease;
+}
+
+.lesson-item:hover, .quiz-item:hover {
+    transform: translateX(5px);
+}
+
+.dark-mode .lesson-item, .dark-mode .quiz-item {
+    background-color: #343a40;
+    border-left-color: #66b0ff;
+}
+
+/* Adding some interactivity */
+#lessons p:hover, #quiz p:hover {
+    color: #0d6efd;
+    cursor: pointer;
+}
+
+.dark-mode #lessons p:hover, .dark-mode #quiz p:hover {
+    color: #66b0ff;
+}
